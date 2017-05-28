@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import App from './components/App';
+import Routes from './routes/routes';
 
 Meteor.startup(() => {
+  Meteor.loginWithPassword('demo@demo.com', 'demo');
   ReactDOM.render(
-    <App />,
+    <Routes />,
     document.getElementById('app')
   );
 });
