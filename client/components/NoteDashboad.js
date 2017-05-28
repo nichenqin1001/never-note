@@ -1,10 +1,11 @@
 import React from 'react';
+import Sidebar from './Nav/NoteSidebar';
 
 const NoteDashboad = () => {
   return (
-    <h1>
-      App Works!
-    </h1>
+    <div className="dashboard">
+      <Sidebar />
+    </div>
   );
 };
 
