@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
 import { Link } from 'react-router-dom';
 
 class FeatureHeader extends Component {
   renderAuthButtons() {
     const { isAuthenticated } = this.props;
-
 
     return isAuthenticated
       ? <button className="button button__mini button__danger">退出</button>
@@ -30,5 +30,10 @@ class FeatureHeader extends Component {
     );
   }
 }
+
+FeatureHeader = createContainer(() => {
+  const isAuthenticated = !!Meteor.userId();
+  return { isAuthenticated };
+}, FeatureHeader);
 
 export default FeatureHeader;

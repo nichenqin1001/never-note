@@ -15,7 +15,8 @@
       width: $button-mini-size;
     }
     #{&}__danger {
-      background: button-danger-bg;
+      background: $button-danger-bg;
+      border: 1px solid darken($button-danger-bg, 2);
     }
     #{&}__fluid {
       width: 100%;

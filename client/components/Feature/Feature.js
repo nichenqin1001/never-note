@@ -5,7 +5,7 @@ class Feature extends Component {
   render() {
     return (
       <div className="feature">
-        <FeatureHeader isAuthenticated={this.props.isAuthenticated} />
+        <FeatureHeader />
       </div>
     );
   }

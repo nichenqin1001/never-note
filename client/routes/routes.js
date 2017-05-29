@@ -5,6 +5,7 @@ import { requireAuth, autoRedirectWithAuth } from '../routes/routesGuard';
 import NoteDashboad from '../components/Notes/NoteDashboad';
 import Feature from '../components/Feature/Feature';
 import Signin from '../components/Auth/Signin';
+import Signup from '../components/Auth/Signup';
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
           <div>
             <Route exact path="/" component={Feature} />
             <Route path="/signin" component={autoRedirectWithAuth(Signin)} />
+            <Route path="/signup" component={autoRedirectWithAuth(Signup)} />
             <Route exact path="/notes" component={requireAuth(NoteDashboad)} />
           </div>
         </Switch>
