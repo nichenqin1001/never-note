@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
+import { Accounts } from 'meteor/accounts-base';
 import { Link } from 'react-router-dom';
 
 class FeatureHeader extends Component {
@@ -7,7 +8,7 @@ class FeatureHeader extends Component {
     const { isAuthenticated } = this.props;
 
     return isAuthenticated
-      ? <button className="button button__mini button__danger">退出</button>
+      ? <button onClick={() => Accounts.logout()} className="button button__mini button__danger">退出</button>
       : (
         <div>
           <Link type="button" to="/signin" className="button button__mini">登录</Link>
@@ -21,7 +22,9 @@ class FeatureHeader extends Component {
     return (
       <div className="feature__header">
         <div className="feature__header__brand">
-          <h2>Never Note</h2>
+          <Link to="/notes">
+            <h2>Never Note</h2>
+          </Link>
         </div>
         <div className="feature__header__auth ml-auto">
           {this.renderAuthButtons()}

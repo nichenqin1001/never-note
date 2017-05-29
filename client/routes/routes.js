@@ -12,12 +12,10 @@ const Routes = () => {
     <BrowserRouter>
       <div>
         <Switch>
-          <div>
-            <Route exact path="/" component={Feature} />
-            <Route path="/signin" component={autoRedirectWithAuth(Signin)} />
-            <Route path="/signup" component={autoRedirectWithAuth(Signup)} />
-            <Route exact path="/notes" component={requireAuth(NoteDashboad)} />
-          </div>
+          <Route exact path="/" component={Feature} />
+          <Route path="/signin" component={autoRedirectWithAuth(Signin)} />
+          <Route path="/signup" component={autoRedirectWithAuth(Signup)} />
+          <Route exact path="/notes" component={requireAuth(NoteDashboad)} />
         </Switch>
       </div>
     </BrowserRouter>

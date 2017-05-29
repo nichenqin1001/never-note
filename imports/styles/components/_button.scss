@@ -10,6 +10,10 @@
   padding: .5rem .8rem;
   margin-left: 20px;
   border-radius: 3px;
+  transition: all .3s ease;
+  &:hover {
+    background: darken($button-bg, 5);
+  }
   @at-root {
     #{&}__mini {
       width: $button-mini-size;
@@ -17,14 +21,20 @@
     #{&}__danger {
       background: $button-danger-bg;
       border: 1px solid darken($button-danger-bg, 2);
+      &:hover {
+        background: darken($button-danger-bg, 5);
+      }
     }
     #{&}__fluid {
       width: 100%;
       margin-left: 0;
     }
     #{&}__large {
-      padding: 1rem 1.2rem;
+      padding: 1rem 2rem;
       font-size: 2.2rem;
+    }
+    #{&}__focus:hover {
+      transform: scale(1.1);
     }
   }
 }
