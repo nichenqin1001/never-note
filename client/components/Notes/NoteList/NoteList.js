@@ -16,7 +16,7 @@ class NoteList extends Component {
 
     if (!noteExists) return <div>还没有笔记，点击添加</div>;
 
-    return notes.map(note => <NoteListItem note={note} />);
+    return notes.map(note => <NoteListItem key={note._id} note={note} />);
   }
 
   render() {

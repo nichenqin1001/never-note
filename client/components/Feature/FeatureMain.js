@@ -8,8 +8,10 @@ class FeatureMain extends Component {
   onDemoLogin() {
     Accounts.logout(() => {
       Meteor.loginWithPassword('demo@demo.com', 'demo', () => {
-        if (!Notes.find().count()) {
-          _.times(10, () => {
+        Meteor.subscribe('notes');
+        const notesCount = Notes.find({}).count();
+        if (!notesCount) {
+          _.times(50, () => {
             Meteor.call('notes.insert');
           });
         }
