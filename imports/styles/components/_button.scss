@@ -33,8 +33,10 @@
       padding: 1rem 2rem;
       font-size: 2.2rem;
     }
-    #{&}__focus:hover {
-      transform: scale(1.1);
+    #{&}__focus {
+      &:hover {
+        transform: scale(1.1);
+      }
     }
   }
 }

@@ -21,3 +21,5 @@ react-meteor-data
 accounts-password
 fourseven:scss
 momentjs:moment
+fortawesome:fontawesome
+natestrauser:animate-css

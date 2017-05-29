@@ -1,0 +1,9 @@
+.flex {
+  display: flex;
+  @at-root {
+    #{&}__center {
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
