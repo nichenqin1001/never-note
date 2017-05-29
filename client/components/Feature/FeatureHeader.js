@@ -23,7 +23,7 @@ class FeatureHeader extends Component {
       <div className="feature__header">
         <div className="feature__header__brand">
           <Link to="/notes">
-            <h2>Never Note</h2>
+            <img height="100%" src="/images/notebook.png" alt="notebook" />
           </Link>
         </div>
         <div className="feature__header__auth ml-auto">

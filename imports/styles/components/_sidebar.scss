@@ -3,4 +3,7 @@
   background-color: $gray;
   border-right: 1px solid $dark-gray;
   height: 100%;
+  padding: 7px;
+  display: flex;
+  flex-direction: column;
 }

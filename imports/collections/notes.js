@@ -1,13 +1,13 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
-import moment from 'meteor/momentjs:moment';
+import moment from 'moment';
 
 Meteor.methods({
   'notes.insert'() {
     if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
 
-    return Meteor.insert({
+    return Notes.insert({
       title: '',
       content: '',
       ownerId: Meteor.userId(),
