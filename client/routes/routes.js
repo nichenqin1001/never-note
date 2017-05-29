@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { requireAuth } from '../routes/routesGuard';
+import { requireAuth, autoRedirectWithAuth } from '../routes/routesGuard';
 // components
 import NoteDashboad from '../components/Notes/NoteDashboad';
 import Feature from '../components/Feature/Feature';
@@ -13,8 +13,8 @@ const Routes = () => {
         <Switch>
           <div>
             <Route exact path="/" component={Feature} />
-            <Route path="/signin" component={Signin} />
-            <Route exact path="/ntoes" component={requireAuth(NoteDashboad)} />
+            <Route path="/signin" component={autoRedirectWithAuth(Signin)} />
+            <Route exact path="/notes" component={requireAuth(NoteDashboad)} />
           </div>
         </Switch>
       </div>

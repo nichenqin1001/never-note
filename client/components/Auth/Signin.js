@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Signin extends Component {
   constructor(props) {
@@ -31,7 +32,8 @@ class Signin extends Component {
             <button className="button button__fluid" type="submit">登录</button>
           </form>
           <div className="box__box__content">
-            还没有账号？点击登陆
+            还没有账号？
+            <Link to="/signup">点击注册</Link>
           </div>
         </div>
       </div>

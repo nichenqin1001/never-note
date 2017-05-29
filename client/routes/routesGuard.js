@@ -6,11 +6,11 @@ import { createContainer } from 'meteor/react-meteor-data';
 export const requireAuth = ComposedComponent => {
   class AuthGuard extends Component {
     componentWillMount() {
-
+      if (!this.props.isAuthenticated) this.props.history.push('/');
     }
 
     componentWillUpdate(nextProps) {
-
+      if (!nextProps.isAuthenticated) this.props.history.push('/');
     }
 
     render() {
@@ -31,11 +31,11 @@ export const requireAuth = ComposedComponent => {
 export const autoRedirectWithAuth = ComposedComponent => {
   class AutoRedirect extends Component {
     componentWillMount() {
-
+      if (this.props.isAuthenticated) this.props.history.push('/notes');
     }
 
     componentWillUpdate(nextProps) {
-
+      if (nextProps.isAuthenticated) this.props.history.push('/notes');
     }
 
     render() {
