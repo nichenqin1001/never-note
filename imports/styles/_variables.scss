@@ -1,4 +1,5 @@
 // colors
+$main-color: #5fb336;
 $default-color: #878787;
 $gray:#f8f8f8;
 $dark-gray:#ececec;
@@ -6,3 +7,9 @@ $dark-gray:#ececec;
 $sidebar-width:73px;
 $note-list-width: 350px;
 $note-height: 120px;
+$header_height: 50px;
+// button
+$button-bg:$main-color;
+$button-danger-bg:#FF5733;
+$button-border: #4ca023;
+$button-mini-size: 88px;

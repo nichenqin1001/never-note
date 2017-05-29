@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { requireAuth } from '../routes/routesGuard';
 // components
 import NoteDashboad from '../components/Notes/NoteDashboad';
+import Feature from '../components/Feature/Feature';
 
 const Routes = () => {
   return (
@@ -10,7 +11,8 @@ const Routes = () => {
       <div>
         <Switch>
           <div>
-            <Route exact path="/" component={requireAuth(NoteDashboad)} />
+            <Route exact path="/" component={Feature} />
+            <Route exact path="/ntoes" component={requireAuth(NoteDashboad)} />
           </div>
         </Switch>
       </div>

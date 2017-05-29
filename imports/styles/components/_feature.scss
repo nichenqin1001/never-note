@@ -1,0 +1,13 @@
+.feature {
+  @at-root {
+    #{&}__header {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      height: $header_height;
+      z-index: 3;
+      padding: 0 2rem;
+      border-bottom: 1px solid $dark-gray;
+    }
+  }
+}

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import FeatureHeader from './FeatureHeader';
 
 class Feature extends Component {
   render() {
     return (
-      <div>
-        Feature
+      <div className="feature">
+        <FeatureHeader isAuthenticated={this.props.isAuthenticated} />
       </div>
     );
   }
