@@ -4,6 +4,7 @@ import { requireAuth } from '../routes/routesGuard';
 // components
 import NoteDashboad from '../components/Notes/NoteDashboad';
 import Feature from '../components/Feature/Feature';
+import Signin from '../components/Auth/Signin';
 
 const Routes = () => {
   return (
@@ -12,6 +13,7 @@ const Routes = () => {
         <Switch>
           <div>
             <Route exact path="/" component={Feature} />
+            <Route path="/signin" component={Signin} />
             <Route exact path="/ntoes" component={requireAuth(NoteDashboad)} />
           </div>
         </Switch>

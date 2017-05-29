@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
+import { Link } from 'react-router-dom';
 
 class FeatureHeader extends Component {
   renderAuthButtons() {
@@ -8,7 +8,13 @@ class FeatureHeader extends Component {
 
     return isAuthenticated
       ? <button className="button button__mini button__danger">退出</button>
-      : <button className="button button__mini">登录</button>;
+      : (
+        <div>
+          <Link type="button" to="/signin" className="button button__mini">登录</Link>
+          <Link type="button" to="/signup" className="button button__mini">注册</Link>
+        </div>
+      );
+
   }
 
   render() {

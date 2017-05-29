@@ -1,4 +1,5 @@
 .button {
+  display: inline-block;
   background: $button-bg;
   color: white;
   text-align: center;
@@ -15,6 +16,14 @@
     }
     #{&}__danger {
       background: button-danger-bg;
+    }
+    #{&}__fluid {
+      width: 100%;
+      margin-left: 0;
+    }
+    #{&}__large {
+      padding: 1rem 1.2rem;
+      font-size: 2.2rem;
     }
   }
 }

@@ -19,6 +19,14 @@ ul {
   list-style: none;
 }
 
+a {
+  text-decoration: none;
+}
+
+input {
+  outline: none;
+}
+
 .ml-auto {
   margin-left: auto !important;
 }

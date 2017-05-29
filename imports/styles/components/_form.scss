@@ -1,0 +1,14 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  @at-root {
+    #{&}__control {
+      width: 100%;
+      border-radius: 7px;
+      padding: .8rem 1rem;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+  }
+}
