@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { requireAuth } from '../routes/routesGuard';
 // components
-import NoteDashboad from '../components/NoteDashboad';
+import NoteDashboad from '../components/Notes/NoteDashboad';
 
 const Routes = () => {
   return (

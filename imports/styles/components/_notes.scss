@@ -1,0 +1,23 @@
+.notes {
+  width: $note-list-width;
+  height: 100%;
+  color: $default-color;
+  display: flex;
+  flex-direction: column;
+  @at-root {
+    #{&}__header {
+      width: 100%;
+      padding: 2rem;
+    }
+    #{&}__list {
+      flex: 1;
+      overflow-x: hidden;
+      @at-root {
+        #{&}__note {
+          height: $note-height;
+          widows: 100%;
+        }
+      }
+    }
+  }
+}
