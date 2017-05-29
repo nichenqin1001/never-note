@@ -1,7 +1,9 @@
 import { Meteor } from 'meteor/meteor';
-import '../imports/collections/notes';
+import { Notes } from '../imports/collections/notes';
 
 Meteor.startup(() => {
   // code to run on server at startup
-
+  Meteor.publish('notes', function () {
+    return Notes.find({ ownerId: this.userId });
+  });
 });
