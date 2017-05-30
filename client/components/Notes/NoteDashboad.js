@@ -5,7 +5,7 @@ import Sidebar from './NoteSidebar';
 import NoteList from './NoteList/NoteList';
 import NoteEditor from './NoteEditor/NoteEditor';
 
-const NoteDashboad = (props) => {
+const NoteDashboad = props => {
   return (
     <div className="dashboard">
       <Sidebar />

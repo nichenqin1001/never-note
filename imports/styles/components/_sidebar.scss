@@ -6,4 +6,8 @@
   padding: 7px;
   display: flex;
   flex-direction: column;
+  transition: transform .5s ease;
+  &.hidden {
+    transform: translateX($sidebar-width);
+  }
 }
