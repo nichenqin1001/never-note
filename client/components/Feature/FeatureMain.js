@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
+import faker from 'faker';
 import { Accounts } from 'meteor/accounts-base';
 import { withRouter } from 'react-router-dom';
 import { Notes } from '../../../imports/collections/notes';
-import _ from 'lodash';
 
 class FeatureMain extends Component {
   onDemoLogin() {
@@ -12,7 +13,9 @@ class FeatureMain extends Component {
         const notesCount = Notes.find({}).count();
         if (!notesCount) {
           _.times(50, () => {
-            Meteor.call('notes.insert');
+            const title = faker.lorem.words();
+            const content = faker.lorem.paragraph();
+            Meteor.call('notes.insert', title, content);
           });
         }
         this.props.history.replace('/notes');
@@ -31,7 +34,7 @@ class FeatureMain extends Component {
           <i className="fa fa-chevron-left fa-3x animated bounceInRight"></i>
         </div>
         <div className="feature__main-description">
-          <img width="256" height="236" src="/images/notebook.png" alt="" />
+          <img className="animated fadeInUp" width="256" height="236" src="/images/notebook.png" alt="" />
         </div>
       </div>
     );

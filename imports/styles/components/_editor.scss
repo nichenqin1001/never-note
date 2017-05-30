@@ -1,0 +1,26 @@
+.editor {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $dark-gray;
+  @at-root {
+    #{&}__header {
+      height: 60px;
+      padding: 10px 30px;
+      display: flex;
+      .fa {
+        font-size: 2.6rem;
+        margin-right: 20px;
+        cursor: pointer;
+        color: $dark-gray;
+        transition: color .2s ease;
+        &:hover {
+          color: $main-color;
+        }
+      }
+    }
+    #{&}__main {
+      flex: 1;
+    }
+  }
+}

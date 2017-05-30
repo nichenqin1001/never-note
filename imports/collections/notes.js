@@ -4,12 +4,12 @@ import { Mongo } from 'meteor/mongo';
 import moment from 'moment';
 
 Meteor.methods({
-  'notes.insert'() {
+  'notes.insert'(title = '', content = '') {
     if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
 
     return Notes.insert({
-      title: '',
-      content: '',
+      title,
+      content,
       ownerId: Meteor.userId(),
       updatedAt: moment().valueOf(),
       createdAt: moment().valueOf()

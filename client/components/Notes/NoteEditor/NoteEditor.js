@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../../../../imports/collections/notes';
+// components
+import NoteEditorHeader from './NoteEditorHeader';
 
 class NoteEditor extends Component {
   render() {
     console.log(this.props);
     return (
-      <div>
-        editor
+      <div className="editor">
+        <NoteEditorHeader />
       </div>
     );
   }
