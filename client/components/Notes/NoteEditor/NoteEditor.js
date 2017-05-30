@@ -9,10 +9,10 @@ import NoteEditorMain from './NoteEditorMain';
 
 class NoteEditor extends Component {
   render() {
-    const { note } = this.props;
+    const { note, isFullScreen } = this.props;
     return (
-      <div className={classnames("editor", { "full-screen": this.props.isFullScreen })}>
-        <NoteEditorHeader />
+      <div className={classnames("editor", { "full-screen": isFullScreen })}>
+        <NoteEditorHeader isFullScreen={isFullScreen} />
         <NoteEditorMain note={note} />
       </div>
     );

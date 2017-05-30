@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from '../../../actions';
+import classnames from 'classnames';
 
 class NoteEditorHeader extends Component {
   onFullScreen() {
@@ -8,6 +9,7 @@ class NoteEditorHeader extends Component {
   }
 
   render() {
+    const { isFullScreen } = this.props;
     return (
       <div className="editor__header">
         <div className="editor__header-left">
@@ -16,7 +18,12 @@ class NoteEditorHeader extends Component {
           <i className="fa fa-trash"></i>
         </div>
         <div className="editor__header-right ml-auto">
-          <i onClick={this.onFullScreen.bind(this)} className="fa fa-arrows-alt"></i>
+          <i
+            onClick={this.onFullScreen.bind(this)}
+            className={classnames(
+              "fa",
+              { "fa-arrows-alt": !isFullScreen, "fa-compress": isFullScreen }
+            )}></i>
         </div>
       </div>
     );
