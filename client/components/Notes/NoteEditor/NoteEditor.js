@@ -3,13 +3,15 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../../../../imports/collections/notes';
 // components
 import NoteEditorHeader from './NoteEditorHeader';
+import NoteEditorMain from './NoteEditorMain';
 
 class NoteEditor extends Component {
   render() {
-    console.log(this.props);
+    const { note } = this.props;
     return (
       <div className="editor">
         <NoteEditorHeader />
+        <NoteEditorMain note={note} />
       </div>
     );
   }

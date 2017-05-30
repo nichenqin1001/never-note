@@ -7,19 +7,17 @@ import { Notes } from '../../../imports/collections/notes';
 
 class FeatureMain extends Component {
   onDemoLogin() {
-    Accounts.logout(() => {
-      Meteor.loginWithPassword('demo@demo.com', 'demo', () => {
-        Meteor.subscribe('notes');
-        const notesCount = Notes.find({}).count();
-        if (!notesCount) {
-          _.times(50, () => {
-            const title = faker.lorem.words();
-            const content = faker.lorem.paragraph();
-            Meteor.call('notes.insert', title, content);
-          });
-        }
-        this.props.history.replace('/notes');
-      });
+    Meteor.loginWithPassword('demo@demo.com', 'demo', () => {
+      Meteor.subscribe('notes');
+      const notesCount = Notes.find({}).count();
+      if (!notesCount) {
+        _.times(50, () => {
+          const title = faker.lorem.words();
+          const content = faker.lorem.paragraph();
+          Meteor.call('notes.insert', title, content);
+        });
+      }
+      this.props.history.replace('/notes');
     });
   }
 

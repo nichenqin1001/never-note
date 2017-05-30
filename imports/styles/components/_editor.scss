@@ -5,9 +5,10 @@
   border: 1px solid $dark-gray;
   @at-root {
     #{&}__header {
-      height: 60px;
       padding: 10px 30px;
       display: flex;
+      align-items: center;
+      border-bottom: 1px solid $dark-gray;
       .fa {
         font-size: 2.6rem;
         margin-right: 20px;
@@ -20,7 +21,13 @@
       }
     }
     #{&}__main {
+      padding: 30px 40px;
       flex: 1;
+      @at-root {
+        #{&}__header {
+          color: $main-color;
+        }
+      }
     }
   }
 }

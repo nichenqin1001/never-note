@@ -8,10 +8,13 @@
     #{&}__header {
       width: 100%;
       padding: 2rem;
+      border-bottom: 1px solid $dark-gray;
     }
     #{&}__list {
       flex: 1;
       overflow-x: hidden;
+      text-overflow: ellipsis;
+      word-break: break-all;
       @at-root {
         #{&}__note {
           height: $note-height;
@@ -19,14 +22,35 @@
           padding: 10px 20px;
           cursor: pointer;
           transition: background .3s ease;
+          border-bottom: 1px solid $dark-gray;
           &:hover {
             background: $main-color;
             a {
-              color: white;
+              * {
+                color: white;
+              }
             }
           }
           a {
             color: $default-color;
+          }
+          @at-root {
+            #{&}-content {
+              height: 100%;
+              display: block;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              font-size: 1.4rem;
+            }
+            #{&}-header {
+              color: #000;
+              font-size: 1.7rem;
+              margin-bottom: 5px;
+            }
+            #{&}-update {
+              margin-bottom: 3px;
+            }
+            #{&}-para {}
           }
         }
       }
