@@ -1,8 +1,14 @@
 .editor {
-  flex: 1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin-left: $sidebar-width+$note-list-width;
   display: flex;
   flex-direction: column;
   border: 1px solid $dark-gray;
+  transition: margin 0.3s ease-in-out;
   @at-root {
     #{&}__header {
       padding: 10px 30px;
@@ -29,5 +35,8 @@
         }
       }
     }
+  }
+  &.full-screen {
+    margin-left: 0;
   }
 }

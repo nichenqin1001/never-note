@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
+import classnames from 'classnames';
 // collections
 import { Notes } from '../../../../imports/collections/notes';
 // components
@@ -21,7 +22,7 @@ class NoteList extends Component {
 
   render() {
     return (
-      <div className="notes">
+      <div className={classnames("notes", { "hidden": this.props.isFullScreen })}>
         <NoteHeader />
         <div className="notes__list">
           {this.renderNoteList()}

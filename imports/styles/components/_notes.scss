@@ -1,10 +1,15 @@
 .notes {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-left: $sidebar-width;
   width: $note-list-width;
   height: 100%;
   color: $default-color;
   display: flex;
   flex-direction: column;
-  transition: transform .5s ease;
+  transition: all .5s ease;
   @at-root {
     #{&}__header {
       width: 100%;
@@ -58,6 +63,7 @@
     }
   }
   &.hidden {
-    transform: translateX($sidebar-width+$note-list-width);
+    margin-left: 0;
+    left: -$note-list-width;
   }
 }

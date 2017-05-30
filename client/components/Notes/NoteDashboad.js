@@ -8,11 +8,11 @@ import NoteEditor from './NoteEditor/NoteEditor';
 
 class NoteDashboad extends Component {
   render() {
-    console.log(this.props);
+    const { isFullScreen } = this.props;
     return (
       <div className="dashboard">
-        <Sidebar />
-        <NoteList />
+        <Sidebar isFullScreen={isFullScreen} />
+        <NoteList isFullScreen={isFullScreen} />
         <Route path={`${this.props.match.path}/:_id`} component={NoteEditor} />
       </div>
     );

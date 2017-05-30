@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as action from '../../../actions';
 
 class NoteEditorHeader extends Component {
   onFullScreen() {
-
+    this.props.toggleFullScreen();
   }
 
   render() {
@@ -20,5 +22,7 @@ class NoteEditorHeader extends Component {
     );
   }
 };
+
+NoteEditorHeader = connect(null, action)(NoteEditorHeader);
 
 export default NoteEditorHeader;

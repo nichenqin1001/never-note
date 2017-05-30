@@ -1,4 +1,8 @@
 .sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
   width: $sidebar-width;
   background-color: $gray;
   border-right: 1px solid $dark-gray;
@@ -8,6 +12,6 @@
   flex-direction: column;
   transition: transform .5s ease;
   &.hidden {
-    transform: translateX($sidebar-width);
+    transform: translateX(-$sidebar-width);
   }
 }
