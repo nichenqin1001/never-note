@@ -15,7 +15,19 @@
       @at-root {
         #{&}__note {
           height: $note-height;
-          widows: 100%;
+          width: 100%;
+          padding: 10px 20px;
+          cursor: pointer;
+          transition: background .3s ease;
+          &:hover {
+            background: $main-color;
+            a {
+              color: white;
+            }
+          }
+          a {
+            color: $default-color;
+          }
         }
       }
     }

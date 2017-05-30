@@ -15,7 +15,7 @@ const Routes = () => {
           <Route exact path="/" component={Feature} />
           <Route path="/signin" component={autoRedirectWithAuth(Signin)} />
           <Route path="/signup" component={autoRedirectWithAuth(Signup)} />
-          <Route exact path="/notes" component={requireAuth(NoteDashboad)} />
+          <Route path="/notes" component={requireAuth(NoteDashboad)} />
         </Switch>
       </div>
     </BrowserRouter>
