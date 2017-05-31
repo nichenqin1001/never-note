@@ -39,7 +39,7 @@ NoteList = createContainer(() => {
   const loading = !notesHandle.ready();
   const note = Notes.findOne();
   const noteExists = !loading && !!note;
-  const notes = Notes.find({}).fetch();
+  const notes = Notes.find({}, { sort: { updatedAt: -1 } }).fetch();
   return { notes, loading, noteExists };
 }, NoteList);
 
