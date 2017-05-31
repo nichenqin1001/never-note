@@ -27,6 +27,7 @@ input {
   outline: none;
 }
 
-.ml-auto {
-  margin-left: auto !important;
+.fa {
+  cursor: pointer;
+  transition: color .3s ease;
 }

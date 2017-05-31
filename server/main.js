@@ -12,6 +12,6 @@ Meteor.startup(() => {
   }
 
   Meteor.publish('notes', function () {
-    return Notes.find({ ownerId: this.userId });
+    return Notes.find({ ownerId: this.userId }, { sort: { updatedAt: -1 } });
   });
 });

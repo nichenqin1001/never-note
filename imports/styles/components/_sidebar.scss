@@ -10,8 +10,22 @@
   padding: 7px;
   display: flex;
   flex-direction: column;
+  align-items: center;
   transition: transform .5s ease;
   &.hidden {
     transform: translateX(-$sidebar-width);
+  }
+  @at-root {
+    #{&}__header {
+      margin-bottom: 40px;
+    }
+  }
+  .fa {
+    color: $main-color;
+    transition: transform .2s ease-in;
+    &:hover {
+      color: darken($main-color, 6);
+      transform: scale(1.2)
+    }
   }
 }
