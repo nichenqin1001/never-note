@@ -1,0 +1,40 @@
+.modal {
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  bottom: 40px;
+  left: 40px;
+  border: 1px solid $dark-gray;
+  outline: none;
+  background: white;
+  padding: 70px 0;
+  @at-root {
+    #{&}__content {
+      @at-root {
+        #{&}-header {
+          font-size: 5rem;
+          color: $main-color;
+          margin-bottom: 60px;
+        }
+        #{&}-content {
+          max-width: 450px;
+          line-height: 1.6;
+        }
+      }
+    }
+  }
+  .fa {
+    position: absolute;
+    top: 40px;
+    right: 80px;
+    color: $dark-gray;
+    transition: color .3s ease;
+    &:hover {
+      cursor: pointer;
+      color: $main-color;
+    }
+  }
+}

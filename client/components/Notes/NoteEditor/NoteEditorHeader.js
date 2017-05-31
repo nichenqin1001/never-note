@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as action from '../../../actions';
 import classnames from 'classnames';
+import Modal from 'react-modal';
+import NoteInfo from '../NoteInfo';
 
 class NoteEditorHeader extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { modalOpen: false };
+  }
+
   onFullScreen() {
     this.props.toggleFullScreen();
   }
@@ -12,13 +20,19 @@ class NoteEditorHeader extends Component {
     Meteor.call('notes.remove', this.props.note);
   }
 
+  handleModal(modalOpen) {
+    this.setState({ modalOpen });
+  }
+
   render() {
-    const { isFullScreen } = this.props;
+    const { isFullScreen, note } = this.props;
     return (
       <div className="editor__header">
         <div className="editor__header-left">
           <i className="fa fa-edit"></i>
-          <i className="fa fa-info-circle"></i>
+          <i
+            onClick={() => this.handleModal(true)}
+            className="fa fa-info-circle"></i>
           <i
             onClick={this.removeNote.bind(this)}
             className="fa fa-trash"></i>
@@ -31,7 +45,18 @@ class NoteEditorHeader extends Component {
               { "fa-arrows-alt": !isFullScreen, "fa-compress": isFullScreen }
             )}></i>
         </div>
-      </div>
+        <Modal
+          isOpen={this.state.modalOpen}
+          contentLabel="noteInfo"
+          className="modal animated fadeIn"
+        >
+          <i
+            onClick={() => this.handleModal(false)}
+            className="fa fa-window-close-o fa-2x">
+          </i>
+          <NoteInfo note={note} />
+        </Modal>
+      </div >
     );
   }
 };
