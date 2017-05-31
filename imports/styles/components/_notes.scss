@@ -23,40 +23,25 @@
       word-break: break-all;
       @at-root {
         #{&}__note {
+          display: block;
           height: $note-height;
           width: 100%;
           padding: 10px 20px;
           cursor: pointer;
           transition: background .3s ease;
+          color: $default-color;
           border-bottom: 1px solid $dark-gray;
-          &:hover {
+          &:hover,
+          &.active {
             background: $main-color;
-            a {
-              * {
-                color: white;
-              }
-            }
-          }
-          a {
-            color: $default-color;
+            color: white;
           }
           @at-root {
             #{&}-content {
               height: 100%;
-              display: block;
+              width: 100%;
               overflow: hidden;
-              text-overflow: ellipsis;
-              font-size: 1.4rem;
             }
-            #{&}-header {
-              color: #000;
-              font-size: 1.7rem;
-              margin-bottom: 5px;
-            }
-            #{&}-update {
-              margin-bottom: 3px;
-            }
-            #{&}-para {}
           }
         }
       }
