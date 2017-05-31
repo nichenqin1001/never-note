@@ -23,7 +23,7 @@ NoteEditor = createContainer((props) => {
   const { _id } = props.match.params;
   const noteHandle = Meteor.subscribe('notes');
   const loading = !noteHandle.ready();
-  const note = Notes.findOne({ _id });
+  const note = Notes.findOne({ _id }) || Notes.findOne({});
   const noteExists = !loading && !!note;
   return { loading, noteExists, note };
 }, NoteEditor);

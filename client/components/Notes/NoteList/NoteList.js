@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
 // collections
 import { Notes } from '../../../../imports/collections/notes';
 // components
@@ -10,6 +11,7 @@ import NoteListItem from './NoteListItem';
 import Loader from '../../Commen/Loader';
 
 class NoteList extends Component {
+
   renderNoteList() {
     const { notes, loading, noteExists } = this.props;
 
@@ -40,5 +42,7 @@ NoteList = createContainer(() => {
   const notes = Notes.find({}).fetch();
   return { notes, loading, noteExists };
 }, NoteList);
+
+NoteList = withRouter(NoteList);
 
 export default NoteList;

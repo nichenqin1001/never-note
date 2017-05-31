@@ -13,6 +13,7 @@ class NoteDashboad extends Component {
       <div className="dashboard">
         <Sidebar isFullScreen={isFullScreen} />
         <NoteList isFullScreen={isFullScreen} />
+        <Route exact path={`${this.props.match.path}`} component={NoteEditor} />
         <Route path={`${this.props.match.path}/:_id`} component={NoteEditor} />
       </div>
     );
