@@ -9,7 +9,7 @@
   left: 40px;
   border: 1px solid $dark-gray;
   outline: none;
-  background: white;
+  background: $gray;
   padding: 70px 0;
   @at-root {
     #{&}__content {

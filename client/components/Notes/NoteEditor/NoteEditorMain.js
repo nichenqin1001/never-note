@@ -10,7 +10,7 @@ class NoteEditorMain extends Component {
 
     return (
       <div className="editor__main">
-        <h1 className="editor__main__header">{note.title}</h1>
+        <input className="editor__main__header" value={note.title} />
       </div>
     );
   }

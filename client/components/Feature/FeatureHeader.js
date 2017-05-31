@@ -5,16 +5,19 @@ import { Link } from 'react-router-dom';
 
 class FeatureHeader extends Component {
   renderAuthButtons() {
-    const { isAuthenticated } = this.props;
+    const { isAuthenticated, email } = this.props;
 
     return isAuthenticated
-      ? <button onClick={() => Accounts.logout()} className="button button__mini button__danger">退出</button>
+      ? (
+        <div>
+          <Link to="/notes" >{email}</Link>
+          <button onClick={() => Accounts.logout()} className="button button__mini button__danger">退出</button>
+        </div>)
       : (
         <div>
           <Link type="button" to="/signin" className="button button__mini">登录</Link>
           <Link type="button" to="/signup" className="button button__mini">注册</Link>
-        </div>
-      );
+        </div>);
 
   }
 
@@ -36,7 +39,11 @@ class FeatureHeader extends Component {
 
 FeatureHeader = createContainer(() => {
   const isAuthenticated = !!Meteor.userId();
-  return { isAuthenticated };
+  let email;
+  if (Meteor.user()) {
+    email = Meteor.user().emails[0].address;
+  }
+  return { isAuthenticated, email };
 }, FeatureHeader);
 
 export default FeatureHeader;
