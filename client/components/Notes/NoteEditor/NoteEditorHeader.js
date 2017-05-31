@@ -12,6 +12,10 @@ class NoteEditorHeader extends Component {
     this.state = { modalOpen: false };
   }
 
+  toggleEditMode() {
+    this.props.toggleEditMode();
+  }
+
   onFullScreen() {
     this.props.toggleFullScreen();
   }
@@ -25,11 +29,13 @@ class NoteEditorHeader extends Component {
   }
 
   render() {
-    const { isFullScreen, note } = this.props;
+    const { isFullScreen, note, isEditMode } = this.props;
     return (
       <div className="editor__header">
         <div className="editor__header-left">
-          <i className="fa fa-edit"></i>
+          <i
+            onClick={this.toggleEditMode.bind(this)}
+            className={classnames("fa fa-edit", { "edit": isEditMode })}></i>
           <i
             onClick={() => this.handleModal(true)}
             className="fa fa-info-circle"></i>
@@ -61,6 +67,6 @@ class NoteEditorHeader extends Component {
   }
 };
 
-NoteEditorHeader = connect(null, action)(NoteEditorHeader);
+NoteEditorHeader = connect(({ isEditMode }) => ({ isEditMode }), action)(NoteEditorHeader);
 
 export default NoteEditorHeader;
