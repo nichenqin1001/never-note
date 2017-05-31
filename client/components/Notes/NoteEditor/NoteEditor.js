@@ -12,7 +12,7 @@ class NoteEditor extends Component {
     const { note, isFullScreen } = this.props;
     return (
       <div className={classnames("editor", { "full-screen": isFullScreen })}>
-        <NoteEditorHeader isFullScreen={isFullScreen} />
+        <NoteEditorHeader note={note} isFullScreen={isFullScreen} />
         <NoteEditorMain note={note} />
       </div>
     );

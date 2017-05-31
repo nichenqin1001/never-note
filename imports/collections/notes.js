@@ -15,6 +15,12 @@ Meteor.methods({
       createdAt: moment().valueOf()
     });
 
+  },
+
+  'notes.remove'(note) {
+    if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
+
+    return Notes.remove(note);
   }
 });
 

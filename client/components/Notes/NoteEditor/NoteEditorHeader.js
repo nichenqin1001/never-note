@@ -8,6 +8,10 @@ class NoteEditorHeader extends Component {
     this.props.toggleFullScreen();
   }
 
+  removeNote() {
+    Meteor.call('notes.remove', this.props.note);
+  }
+
   render() {
     const { isFullScreen } = this.props;
     return (
@@ -15,7 +19,9 @@ class NoteEditorHeader extends Component {
         <div className="editor__header-left">
           <i className="fa fa-edit"></i>
           <i className="fa fa-info-circle"></i>
-          <i className="fa fa-trash"></i>
+          <i
+            onClick={this.removeNote.bind(this)}
+            className="fa fa-trash"></i>
         </div>
         <div className="editor__header-right ml-auto">
           <i
