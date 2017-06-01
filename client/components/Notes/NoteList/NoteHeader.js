@@ -11,7 +11,7 @@ class NoteHeader extends Component {
   render() {
     return (
       <div className="notes__header">
-        <h2>Never Note</h2>
+        <h2 className="notes__header__title">Never Note</h2>
         <input className="form__control sm" onChange={this.onSearchNote.bind(this)} type="text" />
         <p>{this.props.notesCount} 条笔记</p>
       </div>

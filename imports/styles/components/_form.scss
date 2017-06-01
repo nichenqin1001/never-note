@@ -5,13 +5,18 @@
   @at-root {
     #{&}__control {
       width: 100%;
+      border: 1px solid $dark-gray;
       border-radius: 7px;
       padding: .8rem 1rem;
       font-size: 1.3rem;
       margin-bottom: 20px;
+      transition: border .3s ease-in;
+      &:focus {
+        border: 1px solid $main-color;
+      }
       &.sm {
         border-radius: 2px;
-        padding: .3rem .5rem;
+        padding: .6rem .5rem;
         font-size: 1rem;
         margin-bottom: 10px;
       }

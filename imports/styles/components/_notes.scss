@@ -15,6 +15,11 @@
       width: 100%;
       padding: 1rem 2rem;
       border-bottom: 1px solid $dark-gray;
+      @at-root {
+        #{&}__title {
+          margin-bottom: 10px;
+        }
+      }
     }
     #{&}__list {
       flex: 1;
