@@ -25,4 +25,4 @@ natestrauser:animate-css
 aldeed:simple-schema
 dburles:collection-helpers
 dynamic-import
-aldeed:collection2-core
+aldeed:collection2-core@=2.0.1
