@@ -1,7 +1,5 @@
 import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
-// collections
-import { NoteBooks } from './notebooks';
 // libs
 import moment from 'moment';
 

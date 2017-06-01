@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
 import classnames from 'classnames';
-import { withRouter } from 'react-router-dom';
-// collections
-import { Notes } from '../../../../imports/collections/notes';
 // components
 import NoteHeader from './NoteHeader';
 import NoteListItem from './NoteListItem';
@@ -25,7 +20,7 @@ class NoteList extends Component {
   render() {
     return (
       <div className={classnames("notes", { "hidden": this.props.isFullScreen })}>
-        <NoteHeader />
+        <NoteHeader notesCount={this.props.notesCount} />
         <div className="notes__list">
           {this.renderNoteList()}
         </div>
@@ -33,16 +28,5 @@ class NoteList extends Component {
     );
   }
 }
-
-NoteList = createContainer(() => {
-  const notesHandle = Meteor.subscribe('notes');
-  const loading = !notesHandle.ready();
-  const note = Notes.findOne();
-  const noteExists = !loading && !!note;
-  const notes = Notes.find({}, { sort: { updatedAt: -1 } }).fetch();
-  return { notes, loading, noteExists };
-}, NoteList);
-
-NoteList = withRouter(NoteList);
 
 export default NoteList;
