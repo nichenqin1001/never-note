@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import _ from 'lodash';
 import faker from 'faker';
-import { Accounts } from 'meteor/accounts-base';
 import { withRouter } from 'react-router-dom';
 import { Notes } from '../../../imports/collections/notes';
 
