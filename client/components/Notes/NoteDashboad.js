@@ -34,9 +34,10 @@ NoteList = createContainer(props => {
   const notes = Notes
     .find(
     {
-      '$where': function () {
-        return (this.title.indexOf(props.searchText) !== -1 || this.content.indexOf(props.searchText) !== -1);
-      }
+      $or: [
+        { title: { $regex: props.searchText } },
+        { content: { $regex: props.searchText } },
+      ]
     },
     { sort: { updatedAt: -1 } }
     )
