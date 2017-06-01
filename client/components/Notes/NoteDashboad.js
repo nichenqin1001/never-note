@@ -31,7 +31,16 @@ NoteList = createContainer(props => {
   const loading = !notesHandle.ready();
   const note = Notes.findOne();
   const noteExists = !loading && !!note;
-  const notes = Notes.find({ 'title': { '$regex': props.searchText } }, { sort: { updatedAt: -1 } }).fetch();
+  const notes = Notes
+    .find(
+    {
+      '$where': function () {
+        return (this.title.indexOf(props.searchText) !== -1 || this.content.indexOf(props.searchText) !== -1);
+      }
+    },
+    { sort: { updatedAt: -1 } }
+    )
+    .fetch();
   const notesCount = notes.length;
   return { notes, loading, noteExists, notesCount };
 }, NoteList);
