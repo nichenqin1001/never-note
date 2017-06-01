@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withRouter, NavLink } from 'react-router-dom';
-import { connect } from 'react-redux';
 import moment from 'moment';
 
 class NoteListItem extends Component {
@@ -29,8 +28,6 @@ class NoteListItem extends Component {
     );
   }
 }
-
-NoteListItem = connect(({ searchText }) => ({ searchText }))(NoteListItem);
 
 NoteListItem = withRouter(NoteListItem);
 

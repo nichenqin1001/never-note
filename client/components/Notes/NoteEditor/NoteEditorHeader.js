@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import * as action from '../../../actions';
 import classnames from 'classnames';
 import Modal from 'react-modal';
 import NoteInfo from '../NoteInfo';
@@ -66,7 +64,5 @@ class NoteEditorHeader extends Component {
     );
   }
 };
-
-NoteEditorHeader = connect(({ isEditMode }) => ({ isEditMode }), action)(NoteEditorHeader);
 
 export default NoteEditorHeader;

@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-import { createContainer } from 'meteor/react-meteor-data';
-import { Meteor } from 'meteor/meteor';
-// collections
-import { Notes } from '../../../../imports/collections/notes';
 // components
 import NoteHeader from './NoteHeader';
 import NoteListItem from './NoteListItem';
@@ -12,13 +8,13 @@ import Loader from '../../Commen/Loader';
 class NoteList extends Component {
 
   renderNoteList() {
-    const { notes, loading, noteExists } = this.props;
+    const { notes, loading, noteExists, searchText } = this.props;
 
     if (loading) return <Loader />;
 
     if (!noteExists) return <div>还没有笔记，点击添加</div>;
 
-    return notes.map(note => <NoteListItem key={note._id} note={note} />);
+    return notes.map(note => <NoteListItem key={note._id} note={note} searchText={searchText} />);
   }
 
   render() {
@@ -32,25 +28,5 @@ class NoteList extends Component {
     );
   }
 }
-
-NoteList = createContainer(props => {
-  const notesHandle = Meteor.subscribe('notes');
-  const loading = !notesHandle.ready();
-  const note = Notes.findOne();
-  const noteExists = !loading && !!note;
-  const notes = Notes
-    .find(
-    {
-      $or: [
-        { title: { $regex: props.searchText } },
-        { content: { $regex: props.searchText } },
-      ]
-    },
-    { sort: { updatedAt: -1 } }
-    )
-    .fetch();
-  const notesCount = notes.length;
-  return { notes, loading, noteExists, notesCount };
-}, NoteList);
 
 export default NoteList;

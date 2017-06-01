@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import classnames from 'classnames';
 // components
 import Loader from '../../Commen/Loader';
@@ -24,7 +23,5 @@ class NoteEditorMain extends Component {
     );
   }
 }
-
-NoteEditorMain = connect(({ isEditMode }) => ({ isEditMode }))(NoteEditorMain);
 
 export default NoteEditorMain;
