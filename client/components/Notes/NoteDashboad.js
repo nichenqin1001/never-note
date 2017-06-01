@@ -8,13 +8,13 @@ import NoteEditor from './NoteEditor/NoteEditor';
 
 class NoteDashboad extends Component {
   render() {
-    const { isFullScreen } = this.props;
+    const { isFullScreen, match } = this.props;
     return (
       <div className="dashboard">
         <Sidebar isFullScreen={isFullScreen} />
         <NoteList isFullScreen={isFullScreen} />
-        <Route exact path={`${this.props.match.path}`} component={NoteEditor} />
-        <Route path={`${this.props.match.path}/:_id`} component={NoteEditor} />
+        <Route exact path={`${match.path}`} component={NoteEditor} />
+        <Route path={`${match.path}/:_id`} component={NoteEditor} />
       </div>
     );
   }

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Accounts } from 'meteor/accounts-base';
 import classnames from 'classnames';
 
-const NodeSidebar = (props) => {
+const NodeSidebar = props => {
   return (
     <div className={classnames("sidebar", { "hidden": props.isFullScreen })}>
       <Link className="sidebar__header" to="/">
