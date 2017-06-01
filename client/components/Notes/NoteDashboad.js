@@ -3,6 +3,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import * as actions from '../../actions';
 // collections
 import { Notes } from '../../../imports/collections/notes';
 // components
@@ -11,6 +12,10 @@ import NoteList from './NoteList/NoteList';
 import NoteEditor from './NoteEditor/NoteEditor';
 
 class NoteDashboad extends Component {
+  componentWillUnmount() {
+    this.props.searchNote('');
+  }
+
   render() {
     const { isFullScreen, match } = this.props;
     return (
@@ -24,7 +29,7 @@ class NoteDashboad extends Component {
   }
 };
 
-NoteDashboad = connect(({ isFullScreen, searchText }) => ({ isFullScreen, searchText }))(NoteDashboad);
+NoteDashboad = connect(({ isFullScreen, searchText }) => ({ isFullScreen, searchText }), actions)(NoteDashboad);
 
 NoteList = createContainer(props => {
   const notesHandle = Meteor.subscribe('notes');

@@ -36,16 +36,23 @@
           transition: background .3s ease;
           color: $default-color;
           border-bottom: 1px solid $dark-gray;
-          &:hover,
-          &.active {
-            background: $main-color;
-            color: white;
-          }
           @at-root {
             #{&}-content {
               height: 100%;
               width: 100%;
               overflow: hidden;
+              .highlight {
+                font-weight: 1000;
+                color: $main-color;
+              }
+            }
+          }
+          &:hover,
+          &.active {
+            background: $main-color;
+            color: white;
+            .highlight {
+              color: yellow;
             }
           }
         }
