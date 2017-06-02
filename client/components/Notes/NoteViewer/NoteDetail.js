@@ -1,13 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class NoteDetail extends Component {
-  render() {
-    return (
+const NoteDetail = ({note}) => {
+  return (
       <div className="editor__main">
-        Detail
+        <div className="editor__main__title">{note.title}</div>
+        <div className="editor__main__content">{note.content}</div>
       </div>
-    );
-  }
-}
+  );
+};
 
 export default NoteDetail;

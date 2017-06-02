@@ -17,6 +17,12 @@ Meteor.methods({
 
   },
 
+  'notes.update'(note, updates) {
+    if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
+
+    return Notes.update(note, { $set: { updatedAt: moment().valueOf(), ...updates } });
+  },
+
   'notes.remove'(note) {
     if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
 
