@@ -38,11 +38,8 @@ class FeatureHeader extends Component {
 }
 
 FeatureHeader = createContainer(() => {
-  const isAuthenticated = !!Meteor.userId();
-  let email;
-  if (Meteor.user()) {
-    email = Meteor.user().emails[0].address;
-  }
+  const isAuthenticated = !!Meteor.user();
+  const email = isAuthenticated ? Meteor.user().emails[0].address : '';
   return { isAuthenticated, email };
 }, FeatureHeader);
 

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { createContainer } from 'meteor/react-meteor-data';
 // collections
 import { Notes } from '../../../../imports/collections/notes';
@@ -54,5 +55,8 @@ NoteList = createContainer(props => {
 }, NoteList);
 
 NoteList = connect(({ isFullScreen, searchText }) => ({ isFullScreen, searchText }))(NoteList);
+
+// 为子组件NavLink组件提供active class所运行函数的参数
+NoteList = withRouter(NoteList);
 
 export default NoteList;

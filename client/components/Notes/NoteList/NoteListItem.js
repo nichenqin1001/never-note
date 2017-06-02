@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import moment from 'moment';
 
 class NoteListItem extends Component {
@@ -17,8 +17,10 @@ class NoteListItem extends Component {
 
   render() {
     const { content, updatedAt, _id } = this.props.note;
+    const to = `/notes/${_id}`;
+
     return (
-      <NavLink className="notes__list__note" to={`${this.props.match.path}/${_id}`}>
+      <NavLink className="notes__list__note" to={to}>
         <div className="notes__list__note-content">
           {this.renderTitle()}
           <p>{moment(updatedAt).format('YYYY-MM-DD')}</p>
@@ -28,7 +30,5 @@ class NoteListItem extends Component {
     );
   }
 }
-
-NoteListItem = withRouter(NoteListItem);
 
 export default NoteListItem;
