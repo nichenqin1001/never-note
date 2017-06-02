@@ -6,7 +6,7 @@ import { searchNote } from '../../actions';
 // components
 import Sidebar from './NoteSidebar';
 import NoteList from './NoteList/NoteList';
-import NoteEditor from './NoteEditor/NoteEditor';
+import NoteViewer from './NoteViewer/NoteViewer';
 
 class NoteDashboad extends Component {
   componentWillUnmount() {
@@ -19,8 +19,8 @@ class NoteDashboad extends Component {
       <div className="dashboard">
         <Sidebar />
         <NoteList />
-        <Route exact path={`${match.path}`} component={NoteEditor} />
-        <Route path={`${match.path}/:_id`} component={NoteEditor} />
+        <Route exact path={`${match.path}`} component={NoteViewer} />
+        <Route path={`${match.path}/:_id`} component={NoteViewer} />
       </div>
     );
   }

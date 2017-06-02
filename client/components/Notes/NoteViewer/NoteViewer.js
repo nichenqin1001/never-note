@@ -5,30 +5,30 @@ import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 import classnames from 'classnames';
 // components
-import NoteEditorHeader from './NoteEditorHeader';
-import NoteEditorMain from './NoteEditorMain';
+import NoteViewerHeader from './NoteViewerHeader';
+import NoteViewerMain from './NoteViewerMain';
 
-class NoteEditor extends Component {
+class NoteViewer extends Component {
   render() {
     const { note, isFullScreen, isEditMode } = this.props;
     return (
       <div className={classnames("editor", { "full-screen": isFullScreen })}>
-        <NoteEditorHeader {...this.props} />
-        <NoteEditorMain isEditMode={isEditMode} note={note} />
+        <NoteViewerHeader {...this.props} />
+        <NoteViewerMain isEditMode={isEditMode} note={note} />
       </div>
     );
   }
 }
 
-NoteEditor = createContainer((props) => {
+NoteViewer = createContainer((props) => {
   const { _id } = props.match.params;
   const noteHandle = Meteor.subscribe('notes');
   const loading = !noteHandle.ready();
   const note = Notes.findOne({ _id }) || Notes.findOne({});
   const noteExists = !loading && !!note;
   return { loading, noteExists, note };
-}, NoteEditor);
+}, NoteViewer);
 
-NoteEditor = connect(({ isFullScreen, isEditMode }) => ({ isFullScreen, isEditMode }), actions)(NoteEditor);
+NoteViewer = connect(({ isFullScreen, isEditMode }) => ({ isFullScreen, isEditMode }), actions)(NoteViewer);
 
-export default NoteEditor;
+export default NoteViewer;
