@@ -15,6 +15,7 @@ class NoteEditorHeader extends Component {
   }
 
   onFullScreen() {
+    console.log(this.props);
     this.props.toggleFullScreen();
   }
 

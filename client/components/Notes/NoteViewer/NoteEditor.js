@@ -40,8 +40,8 @@ class NoteEditor extends Component {
           defaultValue={this.state.content}
           onChange={this.onChangeContent.bind(this)}>
         </textarea>
-        <button style={{ position: "absolute", right: "80px", bottom: "40px" }} onClick={() => this.props.quitEditMode()}>取消</button>
         <button style={{ position: "absolute", right: "40px", bottom: "40px" }} type="submit">保存</button>
+        <button style={{ position: "absolute", right: "80px", bottom: "40px" }} onClick={() => this.props.quitEditMode()}>取消</button>
       </form>
     );
   }

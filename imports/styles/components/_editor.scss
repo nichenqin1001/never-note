@@ -12,6 +12,7 @@
   @at-root {
     #{&}__header {
       padding: 10px 30px;
+      min-height: 50px;
       display: flex;
       align-items: center;
       border-bottom: 1px solid $dark-gray;

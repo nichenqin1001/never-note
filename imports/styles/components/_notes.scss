@@ -9,6 +9,7 @@
   color: $default-color;
   display: flex;
   flex-direction: column;
+  opacity: 1;
   transition: all .5s ease;
   @at-root {
     #{&}__header {
@@ -60,7 +61,7 @@
     }
   }
   &.hidden {
-    margin-left: 0;
-    left: -$note-list-width;
+    transform: translateX(-$note-list-width);
+    opacity: 0;
   }
 }

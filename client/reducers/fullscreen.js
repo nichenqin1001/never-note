@@ -1,8 +1,8 @@
-import { TOGGOLE_FULLSCREEN } from '../actions/types';
+import { TOGGLE_FULLSCREEN } from '../actions/types';
 
 export default (state = false, action) => {
   switch (action.type) {
-    case TOGGOLE_FULLSCREEN:
+    case TOGGLE_FULLSCREEN:
       return !state;
 
     default:
