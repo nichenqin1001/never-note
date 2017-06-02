@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Prompt } from 'react-router-dom';
 
 class NoteEditor extends Component {
   onChangeTitle(e) {
@@ -11,9 +12,10 @@ class NoteEditor extends Component {
   }
 
   render() {
-    const { note } = this.props;
+    const { note, isEditMode } = this.props;
     return (
       <div className="editor__main">
+        <Prompt when={isEditMode} message="re?" />
         <input
           className="editor__main__title edit"
           onChange={this.onChangeTitle.bind(this)}

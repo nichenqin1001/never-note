@@ -17,10 +17,9 @@ class NoteListItem extends Component {
 
   render() {
     const { content, updatedAt, _id } = this.props.note;
-    const to = `/notes/${_id}`;
 
     return (
-      <NavLink className="notes__list__note" to={to}>
+      <NavLink className="notes__list__note" to={`/notes/${_id}`}>
         <div className="notes__list__note-content">
           {this.renderTitle()}
           <p>{moment(updatedAt).format('YYYY-MM-DD')}</p>

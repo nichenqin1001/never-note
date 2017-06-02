@@ -11,7 +11,7 @@ class NoteViewerMain extends Component {
 
     return isEditMode
       ? <NoteEditor note={note} />
-      : <NoteDetail note={note} />;
+      : <NoteDetail isEditMode={isEditMode} note={note} />;
   }
 }
 
