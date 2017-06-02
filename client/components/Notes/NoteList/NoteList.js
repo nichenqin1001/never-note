@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
+import { connect } from 'react-redux';
+import { createContainer } from 'meteor/react-meteor-data';
+// collections
+import { Notes } from '../../../../imports/collections/notes';
 // components
 import NoteHeader from './NoteHeader';
 import NoteListItem from './NoteListItem';
@@ -28,5 +32,27 @@ class NoteList extends Component {
     );
   }
 }
+
+NoteList = createContainer(props => {
+  const notesHandle = Meteor.subscribe('notes');
+  const loading = !notesHandle.ready();
+  const note = Notes.findOne();
+  const noteExists = !loading && !!note;
+  const notes = Notes
+    .find(
+    {
+      $or: [
+        { title: { $regex: props.searchText } },
+        { content: { $regex: props.searchText } },
+      ]
+    },
+    { sort: { updatedAt: -1 } }
+    )
+    .fetch();
+  const notesCount = notes.length;
+  return { notes, loading, noteExists, notesCount };
+}, NoteList);
+
+NoteList = connect(({ isFullScreen, searchText }) => ({ isFullScreen, searchText }))(NoteList);
 
 export default NoteList;

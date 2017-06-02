@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { createContainer } from 'meteor/react-meteor-data';
-import * as actions from '../../actions';
-import { Notes } from '../../../imports/collections/notes';
+import { bindActionCreators } from 'redux';
+import { searchNote } from '../../actions';
 // components
 import Sidebar from './NoteSidebar';
 import NoteList from './NoteList/NoteList';
@@ -15,11 +14,11 @@ class NoteDashboad extends Component {
   }
 
   render() {
-    const { isFullScreen, match } = this.props;
+    const { match } = this.props;
     return (
       <div className="dashboard">
-        <Sidebar isFullScreen={isFullScreen} />
-        <NoteList {...this.props} />
+        <Sidebar />
+        <NoteList />
         <Route exact path={`${match.path}`} component={NoteEditor} />
         <Route path={`${match.path}/:_id`} component={NoteEditor} />
       </div>
@@ -27,26 +26,8 @@ class NoteDashboad extends Component {
   }
 };
 
-NoteDashboad = createContainer((props) => {
-  const notesHandle = Meteor.subscribe('notes');
-  const loading = !notesHandle.ready();
-  const note = Notes.findOne();
-  const noteExists = !loading && !!note;
-  const notes = Notes
-    .find(
-    {
-      $or: [
-        { title: { $regex: props.searchText } },
-        { content: { $regex: props.searchText } },
-      ]
-    },
-    { sort: { updatedAt: -1 } }
-    )
-    .fetch();
-  const notesCount = notes.length;
-  return { notes, loading, noteExists, notesCount };
-}, NoteDashboad);
+const mapDispatchToProps = dispatch => bindActionCreators({ searchNote }, dispatch);
 
-NoteDashboad = connect(({ isFullScreen, searchText }) => ({ isFullScreen, searchText }), actions)(NoteDashboad);
+NoteDashboad = connect(null, mapDispatchToProps)(NoteDashboad);
 
 export default NoteDashboad;

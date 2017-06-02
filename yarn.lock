@@ -1225,7 +1225,7 @@ signal-exit@^3.0.0:
 
 simpl-schema@^0.3.0:
   version "0.3.0"
-  resolved "http://registry.npm.taobao.org/simpl-schema/download/simpl-schema-0.3.0.tgz#8156ee5915860501afd1c30ca5c8278fb1152bfd"
+  resolved "https://registry.yarnpkg.com/simpl-schema/-/simpl-schema-0.3.0.tgz#8156ee5915860501afd1c30ca5c8278fb1152bfd"
   dependencies:
     clone "1.0.2"
     deep-extend "0.4.1"
