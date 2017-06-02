@@ -1,11 +1,12 @@
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 
-const NoteDetail = ({note}) => {
+const NoteDetail = ({ note }) => {
   return (
-      <div className="editor__main">
-        <div className="editor__main__title">{note.title}</div>
-        <div className="editor__main__content">{note.content}</div>
-      </div>
+    <div className="editor__main">
+      <div className="editor__main__title">{note.title}</div>
+      <ReactMarkdown className="markdown-body" source={note.content} />
+    </div>
   );
 };
 

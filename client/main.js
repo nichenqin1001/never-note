@@ -7,6 +7,8 @@ import Routes from './routes/routes';
 
 import reducer from './reducers';
 
+import 'github-markdown-css/github-markdown.css';
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 Meteor.startup(() => {
