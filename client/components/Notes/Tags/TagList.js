@@ -6,7 +6,7 @@ const TagList = ({ note }) => {
     note
       ? <ul className="bar__list">
         标签：
-        {note.tags.map(tag => <li>{tag}</li>)}
+        {note.tags.map(tag => <li key={tag} className="label">{tag}</li>)}
       </ul>
       : <Loader />
 

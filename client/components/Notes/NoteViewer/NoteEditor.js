@@ -7,14 +7,17 @@ class NoteEditor extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { title: this.props.note.title, content: this.props.note.content };
+    const { title, content, tags } = this.props.note;
+
+    this.state = { title, content, tags };
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const title = e.target.title.value;
     const content = e.target.content.value;
-    Meteor.call('notes.update', this.props.note, { title, content }, error => {
+    const tags = this.state.tags;
+    Meteor.call('notes.update', this.props.note, { title, content, tags }, error => {
       if (!error) this.props.quitEditMode();
     });
   }
@@ -23,9 +26,16 @@ class NoteEditor extends Component {
     const title = e.target.value;
     this.setState({ title });
   }
+
   onChangeContent(e) {
     const content = e.target.value;
     this.setState({ content });
+  }
+
+  handleAddTag() {
+    const tag = this.refs.tag.value;
+    this.setState({ tags: [...this.state.tags, tag] });
+    this.refs.tag.value = '';
   }
 
   render() {
@@ -37,8 +47,9 @@ class NoteEditor extends Component {
           onChange={this.onChangeTitle.bind(this)}
           defaultValue={this.state.title} />
         <div className="bar">
-          {this.props.note.tags.map(tag => <div className="label">{tag}</div>)}
-          <input type="text" placeholder="添加标签..." />
+          {this.state.tags.map(tag => <div key={tag} className="label">{tag}</div>)}
+          <input type="text" name="tag" placeholder="添加标签..." ref="tag" />
+          <i className="fa fa-plus" onClick={this.handleAddTag.bind(this)}></i>
         </div>
         <textarea
           name="content"
