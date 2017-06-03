@@ -14,7 +14,9 @@ class NoteEditor extends Component {
     e.preventDefault();
     const title = e.target.title.value;
     const content = e.target.content.value;
-    Meteor.call('notes.update', this.props.note, { title, content });
+    Meteor.call('notes.update', this.props.note, { title, content }, error => {
+      if (!error) this.props.quitEditMode();
+    });
   }
 
   onChangeTitle(e) {
@@ -34,6 +36,10 @@ class NoteEditor extends Component {
           className="editor__main__title edit"
           onChange={this.onChangeTitle.bind(this)}
           defaultValue={this.state.title} />
+        <div className="bar">
+          {this.props.note.tags.map(tag => <div className="label">{tag}</div>)}
+          <input type="text" placeholder="添加标签..." />
+        </div>
         <textarea
           name="content"
           className="editor__main__content edit"
