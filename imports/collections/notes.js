@@ -13,6 +13,7 @@ Meteor.methods({
       ownerId: Meteor.userId(),
       updatedAt: moment().valueOf(),
       createdAt: moment().valueOf(),
+      tags: [],
       sharedWith: []
     });
 

@@ -6,6 +6,7 @@ import * as actions from '../../../actions';
 import classnames from 'classnames';
 // components
 import NoteViewerHeader from './NoteViewerHeader';
+import NoteViewerInfoBar from './NoteViewerInfoBar';
 import NoteViewerMain from './NoteViewerMain';
 
 class NoteViewer extends Component {
@@ -14,6 +15,7 @@ class NoteViewer extends Component {
     return (
       <div className={classnames("editor", { "full-screen": isFullScreen })}>
         <NoteViewerHeader {...this.props} />
+        <NoteViewerInfoBar note={note} />
         <NoteViewerMain isEditMode={isEditMode} note={note} />
       </div>
     );

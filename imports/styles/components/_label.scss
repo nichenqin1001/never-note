@@ -1,0 +1,10 @@
+.label {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+  margin: 0 .1em;
+  background: $label-bg;
+  background-image: none;
+  padding: .5rem .8rem;
+  border-radius: .2rem;
+}
