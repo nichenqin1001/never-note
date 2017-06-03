@@ -2,9 +2,18 @@
   display: inline-block;
   position: relative;
   line-height: 1;
-  margin: 0 .1em;
+  margin-left: 1rem;
   background: $label-bg;
   background-image: none;
   padding: .5rem .8rem;
   border-radius: .2rem;
+  @at-root {
+    #{&}__tag {
+      position: relative;
+      border-radius: 0 .2rem .2rem 0;
+    }
+  }
+  &:last-of-type {
+    margin-right: 1rem;
+  }
 }

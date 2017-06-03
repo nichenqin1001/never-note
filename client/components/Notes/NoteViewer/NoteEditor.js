@@ -47,7 +47,7 @@ class NoteEditor extends Component {
           onChange={this.onChangeTitle.bind(this)}
           defaultValue={this.state.title} />
         <div className="bar">
-          {this.state.tags.map(tag => <div key={tag} className="label">{tag}</div>)}
+          {this.state.tags.map(tag => <span key={tag} className="label">{tag}</span>)}
           <input type="text" name="tag" placeholder="添加标签..." ref="tag" />
           <i className="fa fa-plus" onClick={this.handleAddTag.bind(this)}></i>
         </div>
