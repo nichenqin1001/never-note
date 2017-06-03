@@ -12,7 +12,8 @@ Meteor.methods({
       content,
       ownerId: Meteor.userId(),
       updatedAt: moment().valueOf(),
-      createdAt: moment().valueOf()
+      createdAt: moment().valueOf(),
+      sharedWith: []
     });
 
   },
@@ -27,6 +28,15 @@ Meteor.methods({
     if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
 
     return Notes.remove(note);
+  },
+
+  'notes.share'(note, email) {
+    if (!Meteor.userId()) throw new Meteor.Error('not authenticated');
+
+    const userExists = !!Meteor.users.findOne({ "email.address": email });
+    if (!userExists) throw new Meteor.Error('没有找到用户');
+
+    return Notes.update(note, { $push: { sharedWith: email } });
   }
 });
 

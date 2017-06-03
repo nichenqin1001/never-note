@@ -2,12 +2,19 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Modal from 'react-modal';
 import NoteInfo from '../NoteInfo';
+import NoteShareList from './NoteShare/NoteShareList';
 
 class NoteEditorHeader extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { modalOpen: false };
+    this.state = {
+      modalOpen: false,
+      shareListVisible: false
+    };
+
+    this.showShareList = this.showShareList.bind(this);
+    this.hideShareList = this.hideShareList.bind(this);
   }
 
   toggleEditMode() {
@@ -15,7 +22,6 @@ class NoteEditorHeader extends Component {
   }
 
   onFullScreen() {
-    console.log(this.props);
     this.props.toggleFullScreen();
   }
 
@@ -25,6 +31,16 @@ class NoteEditorHeader extends Component {
 
   handleModal(modalOpen) {
     this.setState({ modalOpen });
+  }
+
+  showShareList() {
+    this.setState({ shareListVisible: true });
+    document.addEventListener('click', this.hideShareList);
+  }
+
+  hideShareList() {
+    this.setState({ shareListVisible: false });
+    document.removeEventListener('click', this.hideShareList);
   }
 
   render() {
@@ -41,6 +57,11 @@ class NoteEditorHeader extends Component {
           <i
             onClick={this.removeNote.bind(this)}
             className="fa fa-trash"></i>
+          <i
+            className="fa fa-share"
+            onClick={this.showShareList}>
+            {this.state.shareListVisible && <NoteShareList />}
+          </i>
         </div>
         <div className="editor__header-right ml-auto">
           <i
