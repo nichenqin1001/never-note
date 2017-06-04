@@ -29,3 +29,28 @@ textarea {
   cursor: pointer;
   transition: color .3s ease;
 }
+
+.ReactModal__Overlay {
+  transition: opacity 500ms ease-in-out;
+  opacity: 0;
+  &--after-open {
+    opacity: 1;
+  }
+  &--before-close {
+    opacity: 0;
+  }
+}
+
+.tool-bar.ReactModal__Content {
+  transition: all 500ms ease-in-out;
+  transform: translateX(-100%);
+  opacity: 0;
+  &--after-open {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+  &--before-close {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+}

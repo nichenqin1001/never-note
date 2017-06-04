@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { toggleToolBar } from '../../actions';
 import classnames from 'classnames';
+// components
+import TagSearchList from './Tags/TagSearchList';
 
 class NoteSidebar extends Component {
   render() {
@@ -20,6 +22,7 @@ class NoteSidebar extends Component {
           <i onClick={() => this.props.toggleToolBar()} className="fa fa-tags fa-2x"></i>
         </div>
         <i className="fa fa-cog fa-2x mt-auto" onClick={() => Accounts.logout()}></i>
+        <TagSearchList />
       </div>
     );
   }
