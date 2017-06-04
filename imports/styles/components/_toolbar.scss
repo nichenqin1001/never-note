@@ -1,0 +1,15 @@
+.tool-bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: $tool-bar-width;
+  margin-left: $sidebar-width;
+  background: white;
+  border-right: 1px solid $dark-gray;
+  outline: 0;
+  z-index: 998;
+  @at-root {
+    #{&}__header {}
+    #{&}__body {}
+  }
+}

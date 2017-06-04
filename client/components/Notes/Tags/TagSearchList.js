@@ -6,9 +6,8 @@ import { Notes } from '../../../../imports/collections/notes';
 
 class TagSearchList extends Component {
   render() {
-    console.log(this.props);
     return (
-      <div className="sidebar__tools-tags">
+      <div>
         TagSearchList
       </div>
     );
