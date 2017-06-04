@@ -4,6 +4,8 @@ import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { connect } from 'react-redux';
 import classnames from 'classnames';
+// components
+import TagSearchList from './Tags/TagSearchList';
 
 class NoteSidebar extends Component {
   render() {
@@ -15,8 +17,10 @@ class NoteSidebar extends Component {
         </Link>
         <div className="sidebar__tools">
           <i onClick={() => Meteor.call('notes.insert')} className="fa fa-plus-circle fa-2x"></i>
+          <i className="fa fa-tags fa-2x"></i>
         </div>
         <i className="fa fa-cog fa-2x mt-auto" onClick={() => Accounts.logout()}></i>
+        <TagSearchList />
       </div>
     );
   }
