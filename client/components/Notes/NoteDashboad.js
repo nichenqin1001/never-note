@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { searchNote } from '../../actions';
 import Modal from 'react-modal';
+import classnames from 'classnames';
 // components
 import Sidebar from './NoteSidebar';
 import NoteList from './NoteList/NoteList';
@@ -19,8 +20,12 @@ class NoteDashboad extends Component {
     const { match } = this.props;
     return (
       <div className="dashboard">
-        <Modal isOpen={true} contentLabel="modal" className="tool-bar">
-          <TagSearchList />
+        <Modal
+          isOpen={this.props.showToolBar}
+          onAfterOpen={this.afterOpenModal.bind(this)}
+          contentLabel="tool-bar"
+          className="tool-bar">
+          <TagSearchList ref="tag" />
         </Modal>
         <Sidebar />
         <NoteList />
@@ -33,6 +38,6 @@ class NoteDashboad extends Component {
 
 const mapDispatchToProps = dispatch => bindActionCreators({ searchNote }, dispatch);
 
-NoteDashboad = connect(null, mapDispatchToProps)(NoteDashboad);
+NoteDashboad = connect(({ showToolBar }) => ({ showToolBar }), mapDispatchToProps)(NoteDashboad);
 
 export default NoteDashboad;

@@ -7,7 +7,7 @@ import { Notes } from '../../../../imports/collections/notes';
 class TagSearchList extends Component {
   render() {
     return (
-      <div>
+      <div ref="toolbar">
         TagSearchList
       </div>
     );

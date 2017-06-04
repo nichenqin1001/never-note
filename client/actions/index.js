@@ -1,8 +1,14 @@
-import { TOGGLE_FULLSCREEN, TOGGLE_EDITMODE, SEARCH_NOTE, QUIT_EDITMODE } from './types';
+import { TOGGLE_FULLSCREEN, TOGGLE_EDITMODE, SEARCH_NOTE, QUIT_EDITMODE, TOGGLE_TOOLBAR } from './types';
 
 export function toggleFullScreen() {
   return {
     type: TOGGLE_FULLSCREEN
+  };
+}
+
+export function toggleToolBar() {
+  return {
+    type: TOGGLE_TOOLBAR
   };
 }
 
