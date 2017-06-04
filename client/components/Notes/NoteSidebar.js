@@ -3,13 +3,22 @@ import { Link } from 'react-router-dom';
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { toggleToolBar } from '../../actions';
 import classnames from 'classnames';
 // components
 import TagSearchList from './Tags/TagSearchList';
+import Modal from 'react-modal';
 
 class NoteSidebar extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { isModalOpen: false };
+  }
+
+  onCloseModel() {
+    this.setState({ isModalOpen: false });
+  }
+
   render() {
 
     return (
@@ -19,17 +28,22 @@ class NoteSidebar extends Component {
         </Link>
         <div className="sidebar__tools">
           <i onClick={() => Meteor.call('notes.insert')} className="fa fa-plus-circle fa-2x"></i>
-          <i onClick={() => this.props.toggleToolBar()} className="fa fa-tags fa-2x"></i>
+          <i onClick={() => this.setState({ isModalOpen: !this.state.isModalOpen })} className="fa fa-tags fa-2x"></i>
         </div>
         <i className="fa fa-cog fa-2x mt-auto" onClick={() => Accounts.logout()}></i>
-        <TagSearchList />
+        <Modal
+          isOpen={this.state.isModalOpen}
+          className="tool-bar"
+          onRequestClose={this.onCloseModel.bind(this)}
+          contentLabel="tool-bar"
+        >
+          toolbar
+        </Modal>
       </div>
     );
   }
 };
 
-const mapDispatchToProps = dispatch => bindActionCreators({ toggleToolBar }, dispatch);
-
-NoteSidebar = connect(({ isFullScreen }) => ({ isFullScreen }), mapDispatchToProps)(NoteSidebar);
+NoteSidebar = connect(({ isFullScreen }) => ({ isFullScreen }))(NoteSidebar);
 
 export default NoteSidebar;
