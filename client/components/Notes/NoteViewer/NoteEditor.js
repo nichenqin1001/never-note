@@ -23,6 +23,7 @@ class NoteEditor extends Component {
 
   componentDidMount() {
     const mdeOptions = {
+      autoDownloadFontAwesome: false,
       element: this.refs.markdown,
       renderingConfig: {
         codeSyntaxHighlighting: true

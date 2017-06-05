@@ -1,11 +1,29 @@
 import React, { Component } from 'react';
 import hljs from 'highlight.js';
-import ReactMarkdown from 'react-markdown';
 import TagList from '../Tags/TagList';
+import MarkdownIt from 'markdown-it';
 
 class NoteDetail extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { markdown: null };
+  }
+
   componentDidMount() {
-    hljs.initHighlighting();
+    const md = new MarkdownIt({
+      highlight: (str, lang) => {
+        if (lang && hljs.getLanguage(lang)) {
+          try {
+            return hljs.highlight(lang, str).value;
+          } catch (__) { }
+        }
+        return ''; // use external default escaping 
+      }
+    });
+    const rawHTML = md.render(this.props.note.content);
+    const markdown = <div className="markdown-body" dangerouslySetInnerHTML={{ __html: rawHTML }} />;
+    this.setState({ markdown });
   }
 
   render() {
@@ -14,7 +32,7 @@ class NoteDetail extends Component {
       <div className="editor__main">
         <div className="editor__main__title">{note.title}</div>
         <div className="bar"><TagList note={note} /></div>
-        <ReactMarkdown className="markdown-body" source={note.content} />
+        {this.state.markdown}
       </div>
     );
   }

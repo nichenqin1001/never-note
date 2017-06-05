@@ -7,8 +7,8 @@ import Routes from './routes/routes';
 
 import reducer from './reducers';
 
-import 'highlight.js/styles/default.css';
 import 'github-markdown-css/github-markdown.css';
+import 'highlight.js/styles/github.css';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
