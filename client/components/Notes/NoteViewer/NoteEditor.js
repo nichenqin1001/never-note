@@ -10,8 +10,9 @@ class NoteEditor extends Component {
     super(props);
 
     const { title, content, tags } = this.props.note;
+    const error = '';
 
-    this.state = { title, content, tags };
+    this.state = { title, content, tags, error };
   }
 
   componentDidMount() {
@@ -53,11 +54,9 @@ class NoteEditor extends Component {
           <input type="text" name="tag" placeholder="添加标签..." ref="tag" />
           <i className="fa fa-plus" onClick={this.handleAddTag.bind(this)}></i>
         </div>
-        <textarea
-          ref="markdown"
-          name="content"
-          className="editor__main__content edit">
-        </textarea>
+        <div className="editor__main__content edit">
+          <textarea ref="markdown" />
+        </div>
         <button style={{ position: "absolute", right: "40px", bottom: "40px" }} type="submit">保存</button>
         <button style={{ position: "absolute", right: "80px", bottom: "40px" }} onClick={() => this.props.quitEditMode()}>取消</button>
       </form>
