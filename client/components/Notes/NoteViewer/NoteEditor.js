@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import SimpleMDE from 'simplemde';
+import 'simplemde/dist/simplemde.min.css';
 import { quitEditMode } from '../../../actions';
 
 class NoteEditor extends Component {
@@ -12,10 +14,15 @@ class NoteEditor extends Component {
     this.state = { title, content, tags };
   }
 
+  componentDidMount() {
+    this.simplemde = new SimpleMDE({ element: this.refs.markdown });
+    this.simplemde.value(this.state.content);
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const title = e.target.title.value;
-    const content = e.target.content.value;
+    const content = this.simplemde.value();
     const tags = this.state.tags;
     Meteor.call('notes.update', this.props.note, { title, content, tags }, error => {
       if (!error) this.props.quitEditMode();
@@ -25,11 +32,6 @@ class NoteEditor extends Component {
   onChangeTitle(e) {
     const title = e.target.value;
     this.setState({ title });
-  }
-
-  onChangeContent(e) {
-    const content = e.target.value;
-    this.setState({ content });
   }
 
   handleAddTag() {
@@ -52,10 +54,9 @@ class NoteEditor extends Component {
           <i className="fa fa-plus" onClick={this.handleAddTag.bind(this)}></i>
         </div>
         <textarea
+          ref="markdown"
           name="content"
-          className="editor__main__content edit"
-          defaultValue={this.state.content}
-          onChange={this.onChangeContent.bind(this)}>
+          className="editor__main__content edit">
         </textarea>
         <button style={{ position: "absolute", right: "40px", bottom: "40px" }} type="submit">保存</button>
         <button style={{ position: "absolute", right: "80px", bottom: "40px" }} onClick={() => this.props.quitEditMode()}>取消</button>
