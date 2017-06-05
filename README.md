@@ -25,7 +25,7 @@ yarn start
 
 ## TODO:
 
-- [ ] 分屏编辑(isEditMode)
+- [x] 分屏编辑(isEditMode)
 - [ ] 账户分享
 - [ ] 公共页面
 - [ ] 笔记本
@@ -34,3 +34,5 @@ yarn start
   - [ ] 标签编辑
 - [ ] 笔记本排序
 - [ ] 使用meteor/collections2
+- [ ] 创建todo列表
+- [ ] 使用markdown-it

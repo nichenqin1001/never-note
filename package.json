@@ -10,6 +10,7 @@
     "classnames": "^2.2.5",
     "faker": "^4.1.0",
     "github-markdown-css": "^2.6.0",
+    "highlight.js": "^9.12.0",
     "lodash": "^4.17.4",
     "meteor-node-stubs": "~0.2.4",
     "moment": "^2.18.1",

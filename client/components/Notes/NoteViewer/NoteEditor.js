@@ -3,6 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SimpleMDE from 'simplemde';
 import 'simplemde/dist/simplemde.min.css';
+import 'highlight.js';
+import 'highlight.js/styles/default.css';
 import { quitEditMode } from '../../../actions';
 
 class NoteEditor extends Component {
@@ -13,11 +15,19 @@ class NoteEditor extends Component {
     const error = '';
 
     this.state = { title, content, tags, error };
+    this.updateNote = this.updateNote.bind(this);
+    this.handleAddTag = this.handleAddTag.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onChangeTitle = this.onChangeTitle.bind(this);
   }
 
   componentDidMount() {
     const mdeOptions = {
       element: this.refs.markdown,
+      renderingConfig: {
+        singleLineBreaks: false,
+        codeSyntaxHighlighting: true,
+	    },
       toolbar: [
         "bold", "italic", "heading",
         "|",
@@ -35,7 +45,7 @@ class NoteEditor extends Component {
         },
         {
           name: "cancel",
-          action: this.updateNote.bind(this),
+          action: this.updateNote,
           className: "fa fa-check-circle-o",
           title: "Cancel",
         }
