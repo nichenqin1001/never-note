@@ -16,8 +16,41 @@ class NoteEditor extends Component {
   }
 
   componentDidMount() {
-    this.simplemde = new SimpleMDE({ element: this.refs.markdown });
+    const mdeOptions = {
+      element: this.refs.markdown,
+      toolbar: [
+        "bold", "italic", "heading",
+        "|",
+        "quote", "link", "image", "table",
+        "|",
+        "code", "unordered-list", "ordered-list",
+        "|",
+        "clean-block", "side-by-side", "fullscreen",
+        "|",
+        {
+          name: "cancel",
+          action: this.props.quitEditMode,
+          className: "fa fa-ban",
+          title: "Cancel",
+        },
+        {
+          name: "cancel",
+          action: this.updateNote.bind(this),
+          className: "fa fa-check-circle-o",
+          title: "Cancel",
+        }
+      ]
+    };
+    this.simplemde = new SimpleMDE(mdeOptions);
     this.simplemde.value(this.state.content);
+  }
+
+  updateNote() {
+    const { title, tags } = this.state;
+    const content = this.simplemde.value();
+    Meteor.call('notes.update', this.props.note, { title, content, tags }, error => {
+      if (!error) this.props.quitEditMode();
+    });
   }
 
   handleSubmit(e) {
