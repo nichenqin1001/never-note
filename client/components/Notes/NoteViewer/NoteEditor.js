@@ -3,8 +3,8 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import SimpleMDE from 'simplemde';
 import 'simplemde/dist/simplemde.min.css';
-import 'highlight.js';
-import 'highlight.js/styles/default.css';
+import hljs from 'highlight.js';
+window.hljs = hljs;
 import { quitEditMode } from '../../../actions';
 
 class NoteEditor extends Component {
@@ -25,9 +25,8 @@ class NoteEditor extends Component {
     const mdeOptions = {
       element: this.refs.markdown,
       renderingConfig: {
-        singleLineBreaks: false,
-        codeSyntaxHighlighting: true,
-	    },
+        codeSyntaxHighlighting: true
+      },
       toolbar: [
         "bold", "italic", "heading",
         "|",

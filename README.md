@@ -22,6 +22,7 @@ yarn start
 - mongoDB
 - react-meteor-data
 - moment
+- highlight.js
 
 ## TODO:
 
