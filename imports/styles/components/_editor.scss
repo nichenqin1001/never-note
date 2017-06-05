@@ -37,6 +37,7 @@
     #{&}__main {
       padding: 0 20px 30px 20px;
       flex: 1;
+      overflow: scroll;
       @at-root {
         #{&}__title {
           padding: 10px;
