@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import classnames from 'classnames';
 // components
 import TagSearchList from './Tags/TagSearchList';
+import Todos from './Todos/Todos';
 import Modal from 'react-modal';
 
 class NoteSidebar extends Component {
@@ -37,7 +38,7 @@ class NoteSidebar extends Component {
           onRequestClose={this.onCloseModel.bind(this)}
           contentLabel="tool-bar"
         >
-          toolbar
+          <Todos />
         </Modal>
       </div>
     );
