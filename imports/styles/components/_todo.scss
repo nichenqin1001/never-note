@@ -1,0 +1,14 @@
+.todo {
+  width: 100%;
+  border-radius: 7px;
+  background: $gray;
+  border: 1px solid $dark-gray;
+  min-height: 100px;
+  &__title {
+    width: 100%;
+    border-bottom: 1px solid $dark-gray;
+  }
+  &__list {
+    width: 100%;
+  }
+}

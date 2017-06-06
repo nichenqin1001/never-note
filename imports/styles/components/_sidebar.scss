@@ -13,6 +13,7 @@
   align-items: center;
   opacity: 1;
   transition: all .5s ease;
+  z-index: 6;
   &.hidden {
     transform: translateX(-$sidebar-width);
     opacity: 0;

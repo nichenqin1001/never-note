@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 import marked from 'marked';
 import { createContainer } from 'meteor/react-meteor-data';
 import { Notes } from '../../../../imports/collections/notes';
+// components
+import TodoCard from './TodoCard';
 
 class Todos extends Component {
   render() {
+    const { todos } = this.props;
+
     return (
       <div>
-        todo
+        {todos.map(todo => <TodoCard key={todo._id} todo={todo} />)}
       </div>
     );
   }
@@ -25,7 +29,9 @@ Todos = createContainer(() => {
     );
     return { _id, title, todos };
   }).filter(todo => todo.todos.length > 0);
-  return { laoding, noteExists, todos };
+  const plainTodos = todos.reduce((plain, todo) => [...plain, ...todo.todos], []);
+
+  return { laoding, noteExists, todos, plainTodos };
 }, Todos);
 
 export default Todos;
