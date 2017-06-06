@@ -10,7 +10,7 @@ class Todos extends Component {
     const { todos } = this.props;
 
     return (
-      <div>
+      <div className="todo-list">
         {todos.map(todo => <TodoCard key={todo._id} todo={todo} />)}
       </div>
     );

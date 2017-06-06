@@ -1,10 +1,11 @@
 import React from 'react';
 
-const TodoItem = ({ todo }) => {
+const TodoItem = ({ todoItem }) => {
+  const rawHTML = todoItem.substring(4, 7);
+  console.log(rawHTML);
+
   return (
-    <div>
-      {todo}
-    </div>
+    <div dangerouslySetInnerHTML={{ __html: todoItem }} />
   );
 };
 

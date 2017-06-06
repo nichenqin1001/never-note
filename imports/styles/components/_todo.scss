@@ -1,14 +1,21 @@
-.todo {
+.todo-list {
+  height: 100%;
   width: 100%;
-  border-radius: 7px;
-  background: $gray;
-  border: 1px solid $dark-gray;
-  min-height: 100px;
-  &__title {
+  .todo {
     width: 100%;
-    border-bottom: 1px solid $dark-gray;
-  }
-  &__list {
-    width: 100%;
+    background: $gray;
+    border-radius: 7px;
+    min-height: 100px;
+    margin-bottom: 20px;
+    border: 1px solid $dark-gray;
+    &__title {
+      width: 100%;
+      padding: 5px 10px;
+      border-bottom: 1px solid $dark-gray;
+    }
+    &__list {
+      width: 100%;
+      padding: 5px 10px;
+    }
   }
 }
