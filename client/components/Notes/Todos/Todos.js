@@ -25,7 +25,7 @@ Todos = createContainer(() => {
   const todos = notes.map(note => {
     const { _id, title } = note;
     const todos = marked(note.content).split('\n').filter(
-      content => content.substring(4, 7) === ('[ ]' || '[x]')
+      content => content.substring(4, 7) === '[x]' || content.substring(4, 7) === '[ ]'
     );
     return { _id, title, todos };
   }).filter(todo => todo.todos.length > 0);

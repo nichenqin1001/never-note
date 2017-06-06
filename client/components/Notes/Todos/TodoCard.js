@@ -7,7 +7,9 @@ const TodoCard = ({ todo }) => {
       <h3 className="todo__title">
         {todo.title}
       </h3>
-      {todo.todos.map((todoItem, index) => <TodoItem key={index} todoItem={todoItem} />)}
+      <ul className="todo__list">
+        {todo.todos.map((todoItem, index) => <TodoItem key={index} todoItem={todoItem} />)}
+      </ul>
     </div>
   );
 };

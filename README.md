@@ -37,3 +37,4 @@ yarn start
 - [ ] 使用meteor/collections2
 - [ ] 创建todo列表
 - [ ] 使用markdown-it
+- [ ] flowchart.js
