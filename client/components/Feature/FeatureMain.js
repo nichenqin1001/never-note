@@ -16,6 +16,7 @@ class FeatureMain extends Component {
           Meteor.call('notes.insert', title, content);
         });
       }
+
       this.props.history.replace('/notes');
     });
   }
@@ -24,7 +25,15 @@ class FeatureMain extends Component {
     return (
       <div className="feature__main">
         <h1 className="feature__main-header">Never Note</h1>
-        <p className="feature__main-content">我们的目标是：不记笔记！</p>
+        <p className="feature__main-content">
+          我们的目标是：不记笔记！
+        <br />
+          <br />
+          支持markdown编辑
+        <br />
+          <br />
+          支持搜索任务
+        </p>
         <div className="flex flex__center">
           <i className="fa fa-chevron-right fa-3x animated bounceInLeft"></i>
           <button style={{ margin: '0 30px' }} onClick={this.onDemoLogin.bind(this)} className="button button__large button__focus">Live Demo</button>

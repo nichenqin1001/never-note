@@ -4,7 +4,7 @@
 
 ## 使用
 
-```
+```bash
 git clone git@github.com:nichenqin1001/never-note.git
 yarn install
 yarn start
@@ -14,17 +14,18 @@ yarn start
 
 ## 参考
 
-- scss
-- github-markdown-css
 - react
 - react-route(v4)
+- meteor
 - redux
 - mongoDB
+- scss
+- github-markdown-css
 - react-meteor-data
 - moment
 - highlight.js
 
-## TODO:
+## TODO
 
 - [x] 分屏编辑(isEditMode)
 - [ ] 账户分享
